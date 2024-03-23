@@ -1,5 +1,5 @@
 import {recipesContext} from "./recipes"
-import {useContext, useState} from "react"
+import {useContext, useEffect} from "react"
 
 export default function Details(){
     let {detailsData, favorites, data, isFav} = useContext(recipesContext)
@@ -39,6 +39,7 @@ export default function Details(){
         setStateFav(fav)
         setStateIsFav(false)
     }
+
 
     return(
         <div>

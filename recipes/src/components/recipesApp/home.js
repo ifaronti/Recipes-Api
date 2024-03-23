@@ -1,5 +1,5 @@
 import { recipesContext } from "./recipes";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 
 
@@ -17,8 +17,6 @@ export default function RecipesHome(){
         setStateShow(true)
         setStateIsFav(false) 
     }
-    
-
 
     const toLoad = stateData.slice(0, load)
     

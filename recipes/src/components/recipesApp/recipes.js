@@ -13,8 +13,8 @@ export default function RecipesApp(){
     const [detailsData, setDetailsData] = useState({})
     const [searchControl, setSearchControl] = useState('')
     const [search, setSearch] = useState('Banana')
-    const [detailId, setDetailId] = useState('')
-    const [favorites, setFavorites] = useState([])
+    const [detailId, setDetailId] = useState(()=> localStorage.getItem('theID'))
+    const [favorites, setFavorites] = useState(()=> JSON.parse(localStorage.getItem('favs')))
     const [showDetails, setShowDetails] = useState(false)
     const [isFav, setIsFav] = useState(false)
 
@@ -28,9 +28,12 @@ export default function RecipesApp(){
         fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${detailId}?key=b1e3669d-400c-4529-a542-30a757f10366`)
         .then(res => res.json())
         .then(json => setDetailsData(json.data?.recipe))
-
-        
+        localStorage.setItem('theID', detailId)
     }, [detailId])
+
+    useEffect(()=>{
+        localStorage.setItem('favs', JSON.stringify(favorites))
+    }, [favorites])
 
     return(
         <div>
