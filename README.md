@@ -64,7 +64,8 @@ understand that useNavigate can run in a function that handles form submit like 
     event.preventDefault()
     setSearch('some input value here')
     goTo('/') 
-    where '/' represents the home page. I could redirect it to any other page
+
+    Where '/' represents the home page. I could redirect it to any other page
     by using goTo('/component with defined rounte')
 }
 ```
