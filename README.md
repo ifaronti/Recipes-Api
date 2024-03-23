@@ -75,7 +75,7 @@ understand that useNavigate can run in a function that handles form submit like 
 
 ## Author
 
- [Ifarontimi + all my names](github.com/ifaronti)
+ Ifarontimi + all my names
 
 ## Acknowledgments
 Thanks to freeCodeCamp for directing me to this project. Although there was a tutorial set. I decided to do it on my own to learn React-Router and also practice my hold on 
