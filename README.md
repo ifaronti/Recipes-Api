@@ -47,7 +47,7 @@ I picked up react-router's basic concepts and went deeper into useContext hook. 
 
 
 ### Continued development
-I'll be practicing more react-router-dom hooks and continue to use createContex & useContext. useContext is very awesome as soon as I realized how seamless it is to just
+I'll be practicing more react-router-dom hooks and continue to use createContext & useContext. useContext is very awesome as soon as I realized how seamless it is to just
 tranfer a state data from one component to others without use of props
 
 
@@ -70,6 +70,7 @@ understand that useNavigate can run in a function that handles form submit like 
 ```
 
 - [Overflow](stackoverflow.com) - This is all programmer's best and most resourceful site.
+I used this to just check if there are better ways of doing whatever I'm doing.
 
 
 ## Author
