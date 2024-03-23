@@ -66,7 +66,7 @@ understand that useNavigate can run in a function that handles form submit like 
     goTo('/') 
 
     Where '/' represents the home page. I could redirect it to any other page
-    by using goTo('/component with defined rounte')
+    by using goTo('/component with defined route')
 }
 ```
 
