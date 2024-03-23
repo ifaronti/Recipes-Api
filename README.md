@@ -30,7 +30,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub](https://github.com/ifaronti/Recipes-Api)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [netlify](https://ifasrecipesapp.netlify.app/)
 
 ## My process
 The process for this project was very random at first. This project took a cumulative 8-10hours because I was learning some new React tricks. I couldn't really point to a 
