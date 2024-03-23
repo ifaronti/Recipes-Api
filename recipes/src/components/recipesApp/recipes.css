@@ -89,6 +89,10 @@ nav ul{
     border-radius: 8px;
 }
 
+button{
+    cursor: pointer;
+}
+
 .animBtn{
     animation: 1s ease-in-out infinite theLoad;
 }
