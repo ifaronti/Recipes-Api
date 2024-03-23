@@ -40,7 +40,6 @@ more appealing. I love this project!!!!
 ### Built with
 - Flexbox
 - CSS Grid
-- Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 
 ### What I learned
