@@ -14,7 +14,7 @@ export default function RecipesApp(){
     const [searchControl, setSearchControl] = useState('')
     const [search, setSearch] = useState('Banana')
     const [detailId, setDetailId] = useState(()=> localStorage.getItem('theID'))
-    const [favorites, setFavorites] = useState(()=> JSON.parse(localStorage.getItem('favs')))
+    const [favorites, setFavorites] = useState([])
     const [showDetails, setShowDetails] = useState(false)
     const [isFav, setIsFav] = useState(false)
 
@@ -30,10 +30,6 @@ export default function RecipesApp(){
         .then(json => setDetailsData(json.data?.recipe))
         localStorage.setItem('theID', detailId)
     }, [detailId])
-
-    useEffect(()=>{
-        localStorage.setItem('favs', JSON.stringify(favorites))
-    }, [favorites])
 
     return(
         <div>
