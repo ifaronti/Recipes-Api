@@ -15,7 +15,8 @@ export default function RecipesHome(){
     function detailDisplay(id){
         setStateId(id)
         setStateShow(true)
-        setStateIsFav(false) 
+        
+        stateFavor.some(item => item.id === id) ? setStateIsFav(true) : setStateIsFav(false)
     }
 
     const toLoad = stateData.slice(0, load)
