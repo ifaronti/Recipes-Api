@@ -40,6 +40,8 @@ nav ul{
     font-weight: 900;
     margin-left: 3rem;
     position: fixed;
+    cursor: pointer;
+    color: rgb(126, 0, 126);
 }
 
 @media only screen and (max-width: 900px){
@@ -61,6 +63,21 @@ nav ul{
 }
 
 @keyframes theLoad {
+    0% {
+        background: #8E2DE2;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    100% {
+        background: #3494E6;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #EC6EAD, #3494E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+}
+
+@-webkit-keyframes theLoad {
     0% {
         background: #8E2DE2;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
@@ -111,6 +128,7 @@ button{
 }
 
 .animBtn{
+    -webkit-animation: 1s ease-in-out infinite theLoad;
     animation: 1s ease-in-out infinite theLoad;
 }
 
