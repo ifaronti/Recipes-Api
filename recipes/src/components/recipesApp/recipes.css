@@ -1,4 +1,9 @@
 /******************************* Home & Nav section CSS **************** */
+@font-face {
+    font-family: 'Dancing Script';
+    src: url(/src/components/font/DancingScript-Bold.ttf);
+}
+
 html{
     scroll-behavior: smooth;
 }
@@ -29,6 +34,14 @@ nav ul{
     right: 3rem;
 }
 
+.logo{
+    font-family: 'Dancing Script';
+    font-size: 3rem;
+    font-weight: 900;
+    margin-left: 3rem;
+    position: fixed;
+}
+
 @media only screen and (max-width: 900px){
     nav{
         height: 13rem;
@@ -39,6 +52,10 @@ nav ul{
         right: 30vw;
         top: 2px;
         justify-content: center;
+    }
+
+    .logo{
+        display: none;
     }
 
 }

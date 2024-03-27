@@ -1,10 +1,10 @@
-import {Link, Routes, Route} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 import { useState, createContext, useEffect } from "react";
 import RecipesHome from "./home";
 import RecipeFavs from "./favorites";
 import Details from './details';
 import './recipes.css'
-import SearchInput from './searchInput';
+import Nav from './nav';
 
 export const recipesContext = createContext()
 
@@ -31,32 +31,29 @@ export default function RecipesApp(){
         localStorage.setItem('theID', detailId)
     }, [detailId])
 
+    const contextValues ={
+        data:[data, setData],
+        detailId:[detailId, setDetailId],
+        searchControl:[searchControl, setSearchControl],
+        search:[search, setSearch],
+        favorites: [favorites, setFavorites],
+        detailsData:[detailsData, setDetailsData],
+        showDetails:[showDetails, setShowDetails],
+        isFav:[isFav, setIsFav]
+    }
+
+    const searchOnlyContextValues = {
+        search:[search, setSearch],
+        searchControl:[searchControl, setSearchControl]
+    }
+    
     return(
         <div>
-            <nav>
-                <ul>
-                    <li><Link className='links' to='/'>Home</Link></li>
-                    
-                    <li> <Link className='links' to='/favorites'>Favorites</Link></li>
-                </ul>
-                <recipesContext.Provider value={{
-                    search:[search, setSearch],
-                    searchControl:[searchControl, setSearchControl]
-                }}>
-                    <SearchInput/>
-                </recipesContext.Provider>
-            </nav>
-            <recipesContext.Provider value={{
-                    data:[data, setData],
-                    detailId:[detailId, setDetailId],
-                    searchControl:[searchControl, setSearchControl],
-                    search:[search, setSearch],
-                    favorites: [favorites, setFavorites],
-                    detailsData:[detailsData, setDetailsData],
-                    showDetails:[showDetails, setShowDetails],
-                    isFav:[isFav, setIsFav]
-                }}
-            > 
+            <recipesContext.Provider value={searchOnlyContextValues}>
+                <Nav/>
+            </recipesContext.Provider>
+        
+            <recipesContext.Provider value={contextValues}> 
                 <Routes>
                     <Route path="/" element={<RecipesHome/>}></Route>
 
