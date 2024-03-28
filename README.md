@@ -36,19 +36,23 @@ Users should be able to:
 The process for this project was very random at first. This project took a cumulative 8-10hours because I was learning some new React tricks. I couldn't really point to a 
 definitive start point. I just knew after I was done with all the logics, I wanted this project to be in my portfolio. So I did the CSS and added a few effects to make it look
 more appealing. I love this project!!!!
+I have also adopted redxjs/toolkit for state managemnt in this project. This I did a week after I finished the project. I started practicing redux so I decided why not test it on this one.
 
 ### Built with
 - Flexbox
 - CSS Grid
 - [React](https://reactjs.org/) - JS library
+- reduxjs/toolkit
 
 ### What I learned
 I picked up react-router's basic concepts and went deeper into useContext hook. They are both awesome.
+I have also picked up the foundamentals of redux. It is a stressful to set up state management tool 
+but after setup, everything else is smooth sailing
 
 
 ### Continued development
 I'll be practicing more react-router-dom hooks and continue to use createContext & useContext. useContext is very awesome as soon as I realized how seamless it is to just
-tranfer a state data from one component to others without use of props
+tranfer a state data from one component to others without use of props. i'll also be using a lot of redux {useDispatch, useSelector, createSlice, configureStore}
 
 
 ### Useful resources
