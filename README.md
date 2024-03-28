@@ -13,8 +13,8 @@ This is a portfolio project built by Abiodun Morounranti Omidami Ifarontimi + al
 - [Acknowledgments](#acknowledgments)
 
 ## Overview
-This is a project I built using react, react-router and CSS. This is a recipes app. you can search any recipes by entering any word from the recipes's full name and you'll see
-a list of recipes with searched word in it and if you your searched recipe is part of the
+This is a project I built using react, react-router, react-redux reduxjs/toolkit and CSS. This is a recipes app. 
+You can search any recipes by entering any word from the recipes' full name and you'll get cards of recipes with searched word in it and if your searched recipe is part of the
 database, it will also be in the returned page.
 
 ### The challenge
@@ -35,8 +35,8 @@ Users should be able to:
 ## My process
 The process for this project was very random at first. This project took a cumulative 8-10hours because I was learning some new React tricks. I couldn't really point to a 
 definitive start point. I just knew after I was done with all the logics, I wanted this project to be in my portfolio. So I did the CSS and added a few effects to make it look
-more appealing. I love this project!!!!
-I have also adopted redxjs/toolkit for state managemnt in this project. This I did a week after I finished the project. I started practicing redux so I decided why not test it on this one.
+more appealing. I love this project!!!! I have also adopted reduxjs/toolkit for state managemnt in this project. This I did a week after I finished the project. 
+I started practicing redux so I decided why not test it on this one.
 
 ### Built with
 - Flexbox
@@ -52,7 +52,7 @@ but after setup, everything else is smooth sailing
 
 ### Continued development
 I'll be practicing more react-router-dom hooks and continue to use createContext & useContext. useContext is very awesome as soon as I realized how seamless it is to just
-tranfer a state data from one component to others without use of props. i'll also be using a lot of redux {useDispatch, useSelector, createSlice, configureStore}
+tranfer a state data from one component to others without use of props. I'll also be using a lot of redux {useDispatch, useSelector, createSlice, configureStore}
 
 
 ### Useful resources
@@ -76,11 +76,10 @@ understand that useNavigate can run in a function that handles form submit like 
 - [Overflow](stackoverflow.com) - This is all programmer's best and most resourceful site.
 I used this to just check if there are better ways of doing whatever I'm doing.
 
-
 ## Author
 
  Ifarontimi + all my names
 
 ## Acknowledgments
 Thanks to freeCodeCamp for directing me to this project. Although there was a tutorial set. I decided to do it on my own to learn React-Router and also practice my hold on 
-useContext hook.
+useContext hook. I improved my understanding of redux by changing from useContext to reduxjs/toolkit in this project. Now I have multiple state management tools under my belt
