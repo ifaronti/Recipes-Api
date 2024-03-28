@@ -1,14 +1,15 @@
-import {recipesContext} from "./recipes"
-import {useContext, useEffect} from "react"
+import { addFav,deleteFav  } from "../features/favoritesSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { changeIsFav } from "../features/isFavSlice"
 
 export default function Details(){
-    let {detailsData, favorites, data, isFav} = useContext(recipesContext)
-    const [stateFav, setStateFav] = favorites
-    const [stateData, setStateData] = data
-    const [stateDetailsData, setStateDetailsData] = detailsData
-    const [stateIsFav, setStateIsFav] = isFav
-    
-    const fullRecipe = stateDetailsData.ingredients?.map((item, index)=>{
+    const detailsData = useSelector((state) => state.detailsData?.value)
+    const isFav = useSelector(state => state.isFav.value)
+    const data = useSelector(state => state.data.value)
+    const dispatch = useDispatch()
+    const favorites = useSelector(state => state.favorites.value)
+
+    const fullRecipe = detailsData.ingredients?.map((item, index)=>{
         index +=1
        return ( 
         <div key={index}>
@@ -18,52 +19,42 @@ export default function Details(){
     })
 
     function addToFav(id){
-        const cpData = [...stateData] 
-        const fav = [...stateFav]
-        cpData.map(item =>{
+        data.map(item =>{
             if(item.id === id){
-               return fav.includes(item) ? '' : fav.push(item)
+               return favorites.some(item=> item.id ===id) ? '' : dispatch(addFav(item))
             }
         })
-        setStateFav(fav)
-        setStateIsFav(true)
+        dispatch(changeIsFav(true))
     }
 
     function removeFav(id){
-        const fav = [...stateFav]
-        fav.map((item, index)=> {
-            if(item.id === id){
-              return  fav.splice(index, 1)
-            }
+        favorites.map(item => {
+          if(item.id === id){
+            dispatch(deleteFav(item))
+            dispatch(changeIsFav(false))
+          }
         })
-        setStateFav(fav)
-        setStateIsFav(false)
     }
-
 
     return(
         <div>
             <div className="details-wrapper">
-                <img className="detailsImg" src={stateDetailsData.image_url} alt="" />
-                <h1>
-                    {stateDetailsData.title}
-                </h1>
+                <img className="detailsImg" src={detailsData.image_url} alt="" />
+
+                <h1>{detailsData.title}</h1>
 
                 <button 
-                    onClick={()=> stateIsFav ? 
-                    removeFav(stateDetailsData.id) 
-                    : 
-                    addToFav(stateDetailsData.id)}
+                    onClick={()=>isFav ? removeFav(detailsData.id) : addToFav(detailsData.id)}
                 >
-                        {stateIsFav ? 
+                        {isFav ? 
                         'Remove from favorites' 
                         : 
                         'Add to favorites'}
                 </button>
 
-                <h2>Cooking Time: {stateDetailsData.cooking_time + 'mins'}</h2>
+                <h2>Cooking Time: {detailsData.cooking_time + 'mins'}</h2>
 
-                <h3>Serving{stateDetailsData.servings > 1 ? 's' : ''}: {stateDetailsData.servings}</h3>
+                <h3>Serving{detailsData.servings > 1 ? 's' : ''}: {detailsData.servings}</h3>
                 {fullRecipe}
             </div>
         </div>

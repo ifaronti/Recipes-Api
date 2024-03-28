@@ -1,25 +1,23 @@
-import { recipesContext } from "./recipes";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import {Link} from "react-router-dom";
+import { updateID } from "../features/idSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { changeIsFav } from "../features/isFavSlice";
 
 
 export default function RecipesHome(){
-    let {data, detailId, showDetails, isFav, favorites} = useContext(recipesContext)
-    const [stateId, setStateId] = detailId
-    const [stateShow, setStateShow] = showDetails
-    const [stateData, setStateData] = data
-    const [stateFavor, setStateFavor] = favorites
-    const [stateIsFav, setStateIsFav] = isFav
     const [load, setLoad] = useState(4)
+    const favorites = useSelector(state => state.favorites.value)
+    const mainData = useSelector(state => state.data.value)
+    const dispatch = useDispatch()
 
     function detailDisplay(id){
-        setStateId(id)
-        setStateShow(true)
+        dispatch(updateID(id))
         
-        stateFavor.some(item => item.id === id) ? setStateIsFav(true) : setStateIsFav(false)
+        favorites.some(item => item.id === id) ? dispatch(changeIsFav(true)) : dispatch(changeIsFav(false))
     }
 
-    const toLoad = stateData.slice(0, load)
+    const toLoad = mainData.slice(0, load)
     
     const home = toLoad.map((item,index)=>{
         index +=1
@@ -39,15 +37,16 @@ export default function RecipesHome(){
     })
 
     function loadMore(){
-        window.scrollTo(0, document.documentElement.scrollHeight)
-        if(stateData.length <= load){
-            setLoad(stateData.length)
+
+        if(mainData.length <= load){
+            setLoad(mainData.length)
         }
         else{
-            if(stateData.length > load){
+            if(mainData.length > load){
                 setLoad(prevLoad => prevLoad +=4)
             }
         }
+        window.scrollTo(0, document.documentElement.scrollHeight)
     }
 
     return (
@@ -57,10 +56,10 @@ export default function RecipesHome(){
             </div>
             <button 
                 onClick={loadMore}
-                className={stateData.length > load ? 'loadBtn animBtn' : 'loadBtn'}
-                disabled={stateData.length <= load ? true : false}
+                className={mainData.length > load ? 'loadBtn animBtn' : 'loadBtn'}
+                disabled={mainData.length <= load ? true : false}
             >
-                {stateData.length < load ? 'Last Loaded' : 'Load More'}
+                {mainData.length < load ? 'Last Loaded' : 'Load More'}
             </button>
         </div>
     )

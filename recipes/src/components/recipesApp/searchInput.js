@@ -1,27 +1,28 @@
-import { recipesContext } from "./recipes";
-import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { changeSearch } from "../features/searchSlice";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+
 
 export default function SearchInput(){
-    let {searchControl, search} = useContext(recipesContext)
-    const [stateControl, setStateControl] = searchControl
-    const [stateSearch, setStateSearch] = search
+    const [searchControl, setSearchControl] = useState('')
     const goTo = useNavigate()
+    const dispatch = useDispatch()
 
     function handleChange(event){
         let {value} = event.target
-        setStateControl(value)
+        setSearchControl(value)
     }
 
     function handleSubmit(event){
         event.preventDefault()
-        setStateSearch(stateControl)
+        dispatch(changeSearch(searchControl))
         goTo('/')
     }
 
     const searchForm = <form onSubmit={handleSubmit}>
-        <input type="text" value={stateControl} onChange={handleChange} />
-        <button type="submit">Click To Search</button>
+        <input type="text" value={searchControl} onChange={handleChange} placeholder="Enter recipe to search" />
+        <button type="submit">Search</button>
     </form>
 
     return (

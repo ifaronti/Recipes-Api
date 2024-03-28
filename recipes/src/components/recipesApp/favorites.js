@@ -1,33 +1,32 @@
-import {useContext, useState} from "react";
-import {recipesContext} from "./recipes";
+import {useState} from "react";
+import { updateID } from "../features/idSlice";
 import {Link} from "react-router-dom";
+import { changeIsFav } from "../features/isFavSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function RecipeFavs(){
-    const {favorites, detailId, showDetails, isFav} = useContext(recipesContext)
-    const [stateFav, setStatefav] = favorites
-    const [stateId, setStateId] = detailId
-    const [stateShow, setStateShow] = showDetails
-    const [stateIsFav, setStateIsFav] = isFav
     const [load, setLoad] = useState(4)
+    const favorites = useSelector(state => state.favorites.value)
+    const dispatch = useDispatch()
+
     
     function detailDisplay(id){
-        setStateId(id)
-        setStateShow(true)
-        setStateIsFav(true)
+        dispatch(updateID(id))
+        dispatch(changeIsFav(true))
     }
 
     function loadMore(){
-        if(stateFav.length <= load){
-            return stateFav.length
+        if(favorites.length <= load){
+            return favorites.length
         }
         else{
-            if(stateFav.length > load){
+            if(favorites.length > load){
                 setLoad(prevLoad => prevLoad +=4)
             }
         }
     }
 
-    const toLoad = stateFav.slice(0, load)
+    const toLoad = favorites.slice(0, load)
 
     const favs = toLoad.map((item,index)=>{
         index +=1
@@ -53,10 +52,10 @@ export default function RecipeFavs(){
             <div className="cards-wrapper favCards">{favs}</div>
             <button 
                 onClick={loadMore}
-                disabled={load >= stateFav.length ? true: false}
-                className={stateFav.length > load ? 'loadBtn animBtn' : 'loadBtn'}
+                disabled={load >= favorites.length ? true: false}
+                className={favorites.length > load ? 'loadBtn animBtn' : 'loadBtn'}
             >
-                {stateFav.length < load ? 'Last Loaded' : 'Load More'}
+                {favorites.length < load ? 'Last Loaded' : 'Load More'}
             </button>
         </div>
     )
