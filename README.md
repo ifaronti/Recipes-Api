@@ -1,4 +1,4 @@
-This is a portfolio project built by Abiodun Morounranti Omidami Ifarontimi + all my names
+This is a mini project built by the glorious foodie named Morounranti Omidami Ifarontimi And All My Names
 
 ## Table of contents
 - [Overview](#overview)
